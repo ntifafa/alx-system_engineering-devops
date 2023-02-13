@@ -1,4 +1,4 @@
 #!/bin/bash
 git add .
-git commit -m "display first 10 lines"
+git commit -m "script to print 3rd line"
 git push
