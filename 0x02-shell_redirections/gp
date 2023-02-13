@@ -1,4 +1,4 @@
 #!/bin/bash
 git add .
-git commit -m "script to print 3rd line"
+git commit -m "redirect ls output to file"
 git push
