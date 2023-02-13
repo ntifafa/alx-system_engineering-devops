@@ -1,4 +1,4 @@
 #!/bin/bash
 git add .
-git commit -m "redirect ls output to file"
+git commit -m "duplicate last line script"
 git push
