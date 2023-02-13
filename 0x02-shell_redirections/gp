@@ -1,4 +1,4 @@
 #!/bin/bash
 git add .
-git commit -m "remove .js files"
+git commit -m "count file and subdirectories"
 git push
