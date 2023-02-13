@@ -1,4 +1,4 @@
 #!/bin/bash
 git add .
-git commit -m "duplicate last line script"
+git commit -m "remove .js files"
 git push
