@@ -27,7 +27,7 @@ if ! grep -q "error_page 404 /404.html;" $CONFIG_FILE; then
 fi
 # add custom HTTP response header
 if ! grep -q "add_header X-Served-By \$hostname;" /etc/nginx/sites-available/default; then
-    sudo sed -i "/^server {/a \\\tadd_header X-Served-By \$hostname;" /etc/nginx/sites-available/default
+    sudo sed -i "/^server {/a \\\tadd_header X-Served-By \$HOSTNAME;" /etc/nginx/sites-available/default
 fi
 # restart nginx service
 sudo systemctl restart nginx.service
