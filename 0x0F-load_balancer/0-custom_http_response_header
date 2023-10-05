@@ -3,11 +3,10 @@
 
 # installs nginx on server
 # update package list
-apt-get -y update
+apt-get update
 # install nginx
 apt-get -y install nginx
-# start nginx
-service nginx start
+
 # allow incoming HTTP traffic on port 80
 ufw allow 'Nginx HTTP'
 # Append "Hello World!" to the default Nginx index.html file
@@ -29,4 +28,4 @@ if ! grep -q "add_header X-Served-By \$HOSTNAME;" /etc/nginx/sites-available/def
     sudo sed -i "/^server {/a \\\tadd_header X-Served-By \$HOSTNAME;" /etc/nginx/sites-available/default
 fi
 # restart nginx service
-sudo systemctl restart nginx.service
+sudo service nginx restart
