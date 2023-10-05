@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
-# This script condenses the previous fix
 
-ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-service nginx start
-pkill -f 'nginx'
+# Define the configuration file path
+nginx_config_file="/etc/nginx/sites-available/default /etc/nginx/sites-enabled/default"
+# Replace "8080" with "80" in the Nginx configuration file
+sed -i 's/8080/80/g' "$nginx_config_file"
+# Restart the Nginx service
+service nginx restart
+# Kill the oldest Nginx process
+pkill -o nginx
