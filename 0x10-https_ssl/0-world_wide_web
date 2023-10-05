@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Function to display DNS information for a subdomain
+
+dns_info() {
+    local domain="$1"
+    local subdomain="$2"
+    local result
+    result=$(dig +short "$subdomain.$domain" | head -1)
+
+    if [ -n "$result" ]; then
+        echo "The subdomain $subdomain.$domain resolves to IP address: $result"
+    else
+        echo "No DNS record found for $subdomain.$domain"
+    fi
+}
+
+# check the number of command-line arguments
+if [ "$#" -eq 1 ]; then
+    domain="$1"
+    subdomains=("www" "lb-01" "web-01" "web-02")
+    for subdomain in "${subdomains[@]}"; do
+        dns_info "$domain" "$subdomain"
+    done
+elif [ "$#" -eq 2 ]; then
+    domain="$1"
+    subdomain="$2"
+    dns_info "$domain" "$subdomain"
+else
+    echo "Usage: $0 <domain> [subdomain]"
+fi
