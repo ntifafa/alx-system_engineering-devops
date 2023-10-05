@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-#configure web-02 to be identical to web-01 
-#including the custom HTTP response header (web-02)
+#configure web-02 to be identical to web-01, including the custom HTTP response header (web-02)
 
 # installs nginx on server
 # update package list
