@@ -8,13 +8,15 @@ dns_info() {
     result=$(dig +short "$subdomain.$domain" | head -1)
 
     if [ -n "$result" ]; then
-        echo "The subdomain $subdomain.$domain resolves to IP address: $result"
+        local record_type
+        record_type=$(dig "$subdomain.$domain" | grep -A1 'ANSWER SECTION:' | awk '{print $4}')
+        echo "The subdomain $subdomain is a $record_type record and points to $result"
     else
         echo "No DNS record found for $subdomain.$domain"
     fi
 }
 
-# check the number of command-line arguments
+# Check the number of command-line arguments
 if [ "$#" -eq 1 ]; then
     domain="$1"
     subdomains=("www" "lb-01" "web-01" "web-02")
